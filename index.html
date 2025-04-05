@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="jquery.js"></script>
+    <script src="perlin.js"></script>
+    <!-- <script src="jquery-ui.min.js"></script> -->
+    <!-- <script src="jquery-ui-touchpunch.min.js"></script> -->
+
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="jquery-ui.theme.min.css"> -->
+    <!-- <link rel="stylesheet" href="jquery-ui.structure.min.css"> -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+
+    <style-no style="display: none;">
+
+        .dice {
+        width: var(--sizeDice);
+        height: var(--sizeDice);
+        min-width: var(--sizeDice);
+        min-height: var(--sizeDice);
+        border-radius: 8px;
+        background-size: contain;
+        padding: .1vw;
+        }
+
+        .dice.n1 {
+        background-image: url("assets/dice/dice_1.png");
+        }
+
+        .dice.n2 {
+        background-image: url("assets/dice/dice_2.png");
+        }
+
+        .dice.n3 {
+        background-image: url("assets/dice/dice_3.png");
+        }
+
+        .dice.n4 {
+        background-image: url("assets/dice/dice_4.png");
+        }
+
+        .dice.n5 {
+        background-image: url("assets/dice/dice_5.png");
+        }
+
+        .dice.n6 {
+        background-image: url("assets/dice/dice_6.png");
+        }
+
+        .dice.red {
+        filter: brightness(30%) sepia(150%) saturate(2000%) brightness(80%) hue-rotate(-25deg);
+        }
+
+        .dice.green {
+        filter: brightness(40%) sepia(150%) saturate(2000%) brightness(80%) hue-rotate(80deg);
+        }
+
+        .dice.blue {
+        filter: brightness(50%) sepia(100%) saturate(2000%) brightness(80%) hue-rotate(180deg);
+        }
+
+        .dice.gray {
+        outline: 5px solid white;
+        outline-offset: -5px;
+        filter: brightness(12%) invert() brightness(51%) contrast(1000%);
+        }
+
+        .dice.black {
+        filter: invert();
+        outline: 5px solid white;
+        outline-offset: -5px;
+        }
+
+        .dice.white {
+        filter: none;
+        }
+
+        .dice.purple {
+        filter: brightness(35%) sepia(100%) saturate(2000%) brightness(70%) hue-rotate(275deg);
+        }
+
+        .dice.brown {
+        filter: brightness(35%) sepia(100%) saturate(400%) brightness(70%) hue-rotate(-10deg);
+        }
+
+    </style-no>
+
+    <script src="generator.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <div id="nrWrapper"></div>
+    <div id="cardWrapper">
+    </div>
+
+    <div id="boardWrapper">
+        <div class="boardButton" id="buttonLeft">←</div>
+        <div class="boardButton" id="buttonRight">→</div>
+        <div class="boardButton" id="buttonUp">↑</div>
+        <div class="boardButton" id="buttonDown">↓</div>
+        <div id="board"></div>
+        <div id="objective"></div>
+    </div>
+
+    <div id="diceWrapper">
+        <div id="dice"></div>
+        <div id="showObjectiveButton">Show Objective</div>
+    </div>
+
+    <div id="buttonFullscreen">&#x26F6;</div>
+
+    <div id="gameoverLoss">
+        <div>Game End</div>
+        <div class="smaller">you have lost</div>
+        <div class="smaller restartButton">restart</div>
+    </div>
+
+    <div id="gameoverWin">
+        <div>Game End</div>
+        <div class="smaller">YOU HAVE WON</div>
+        <div class="smaller restartButton">restart</div>
+    </div>
+
+    <div class="power" id="powerBlue"></div>
+
+    <div class="power" id="powerGreen">
+        <div class="text">Select 3 dice to reroll</div>
+        <div class="button" onclick="powerGreenEnd()">done</div>
+    </div>
+
+    <!-- <div id="head"></div>
+    <div id="bottom">
+        <div id="dice">
+            <div class="red dice n1"></div>
+            <div class="green dice n3"></div>
+            <div class="blue dice n3"></div>
+            <div class="gray dice n5"></div>
+            <div class="brown dice n1"></div>
+            <div class="purple dice n3"></div>
+        </div>
+        
+    </div>
+
+    <div class="arrow">
+        <svg width="10000" height="10000">
+            <path id='arrow-line' marker-end='url(#head)' stroke-width='4' fill='none' stroke='#FFFFFF22' d='M0,0 0 0' />
+        </svg>
+    </div> -->
+</body>
+
+</html>

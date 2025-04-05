@@ -1,0 +1,338 @@
+@font-face {
+    font-family: "dicedots";
+    src: url("dicedots.ttf");
+}
+
+:root {
+    --sizeDice: 12vw;
+}
+
+html,
+body {
+    background-color: #222223;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    background-image: url(assets/background.png);
+    background-position: center;
+    background-size: cover;
+}
+
+* {
+    font-family: "Karla", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    user-select: none;
+}
+
+
+#boardWrapper {
+    position: relative;
+    width: 100vh;
+    height: 100vh;
+}
+
+#board {
+    width: 100vh;
+    height: 100vh;
+    z-index: 10;
+}
+
+#diceWrapper {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#dice {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    justify-content: center;
+    gap: 3vw;
+}
+
+#cardWrapper {
+    position: relative;
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#cardUp,
+#cardDown {
+    position: absolute;
+    color: white;
+    width: 100%;
+    text-align: center;
+    opacity: 0%;
+    z-index: 10;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#cardUp {
+    justify-content: start;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+#cardDown {
+    justify-content: end;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.boardButton {
+    position: absolute;
+    width: 10vh;
+    height: 10vh;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.0001);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#buttonLeft {
+    top: 45vh;
+    left: 0;
+}
+
+#buttonRight {
+    top: 45vh;
+    left: 90vh;
+}
+
+#buttonUp {
+    top: 0;
+    left: 45vh;
+}
+
+#buttonDown {
+    top: 90vh;
+    left: 45vh;
+}
+
+#buttonFullscreen {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: white;
+}
+
+#gameoverLoss,
+#gameoverWin {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.856);
+    color: white;
+    font-size: 16vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5vh;
+}
+
+#gameover .smaller {
+    font-size: 8vh;
+}
+
+#gameoverWin .restartButton,
+#gameoverLoss .restartButton {
+    background-color: rgba(255, 255, 255, 0.103);
+    padding: 1vh 4vh;
+    border-radius: 3vh;
+}
+
+#showObjectiveButton {
+    /* background-color: rgba(255, 255, 255, 0.664); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10vh;
+    padding: 1vh 4vh;
+    border-radius: 2vh;
+    color: white;
+    border: 1px solid white;
+}
+
+#objective {
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s;
+}
+
+/* .butt {
+    padding: 5px 8px;
+    border-radius: 4px;
+    background-color: rgb(76, 123, 150);
+    color: black;
+}
+
+.helper {
+    width: .1vw;
+    height: .1vw;
+    background-color: white;
+}
+.arrow {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+} */
+
+.card {
+    position: relative;
+    width: 48vh;
+    height: 70vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 3vw;
+    box-shadow: 1vw 1vw 1vw #00000055;
+}
+
+.symbols {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    overflow: hidden;
+    width: 20vh;
+    height: 100%;
+}
+
+.symbol {
+    width: 40vh;
+    margin-bottom: -16vh;
+}
+
+.pos {
+    position: absolute;
+    width: 9vh;
+    height: 9vh;
+    border: 1px solid rgba(255, 255, 255, 0.377);
+    background-size: cover;
+    background-position: center;
+}
+
+.dice {
+    width: 16vh;
+    height: 16vh;
+    background-repeat: no-repeat;
+    background-size: 48vh;
+    border-radius: 1vw;
+    border: .3vw solid black;
+
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content: center;
+
+}
+
+.dice .ball {
+    background-color: white;
+    width: 5vh;
+    height: 1vh;
+    border-radius: 1vh;
+    transform: translateY(3vh);
+    margin: .5vh;
+}
+
+.dice.selected {
+    border: .3vw solid white;
+}
+
+.dice.disabled {
+    opacity: 20%;
+}
+
+.power {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.836);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.power .text {
+    color: rgb(255, 255, 255);
+    font-size: 10vh;
+}
+
+.power .button {
+    color: black;
+    font-size: 10vh;
+    background-color: rgba(255, 255, 255, 0.404);
+    border-radius: 4vh;
+    padding: 1vh 3vh;
+}
+
+#powerGreen {
+    width: 75vw;
+    left: 0;
+}
+
+#powerBlue {
+    display: none;
+}
+
+.chooser {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.836);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+#nrWrapper {
+    position: fixed;
+    left: 0;
+    width: 25vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nrOfCards {
+    background-color: rgba(255, 255, 255, 0.39);
+    width: 10px;
+    height: 1px;
+    margin-bottom: 1vh;
+}
